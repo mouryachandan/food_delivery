@@ -58,7 +58,11 @@ export const UserLogin = async (req, res, next) => {
     });
     return res.status(200).json({ token, user });
   } catch (err) {
-    next(err);
+    console.error("Error while signin user", err);
+    res.status(500).json({
+      message: "error loggin user",
+      error: err
+    })
   }
 };
 
